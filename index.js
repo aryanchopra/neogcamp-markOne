@@ -4,13 +4,13 @@ console.log("Welcome " + userName + " to a questionnaire on how well you know Ar
 var score=0;
 
 function ask(question, answer){
-  var ans= readLineSync.question(question);
-  if(ans===answer){
-    console.log('Correct answer! You know me ;)');
+  var ans = readLineSync.question(question);
+  if(ans.toLowerCase()===answer.toLowerCase()){
+    console.log('Correct answer!');
     score=score+1;
   }
   else{
-    console.log("Boo! You don't know me that well!");
+    console.log("Boo! Wrong Answer!");
     score=score-1;
   }
   console.log("------------------");
@@ -18,4 +18,10 @@ function ask(question, answer){
 }
 
 
-ask("What is my favourite food? \nRajma Chawal or Butter Chicken? ","Both");
+var questions = [{question:"\nWhich college was Aryan in? " , answer: "MUJ" }, {question:"What sport does Aryan play? " , answer:"Basketball"}, {question:"What is Aryan's favourite food? \nRajma Chawal or Butter Chicken? " , answer: "Both" }, {question: "Who is Aryan's favorite sportsperson " , answer: "Lebron James"}, {question: "Is Aryan a cat person or a dog person? " , answer: "Cat"}]
+
+for(let i=0;i<questions.length;i++){
+  ask(questions[i].question,questions[i].answer)
+}
+console.log("Thank you for playing "+userName+"!");
+console.log("You scored "+score+"/5 points!");
